@@ -48,17 +48,32 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 ### Reflection
 
+
+### Reflection
+
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Response: 
+
+The lessons about creating Elements, Forms, Functions, selector selections, img insertions. using console to see resuls with debugging etc. 
+
+
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
-  
-Add your response here
 
+Response:
+
+I would have redid my code and done a less complex approach. I would have spent more time doing the strech features. 
+  
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+
+Response:
+
+I dont think I had felt confident with this project. I thought out the concepts well however the excuetion was more complex that I knew how to do so i spent more time right to figure out how to successfully get it to work the way I wanted to when there was easier ways to be taken. I wanted to see my detail through but it only ended up putting me at a disadvantage as we had the time constraint. 
+
+
+
 
 ### Open-source libraries used
 
@@ -67,3 +82,6 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+
+I woould like to shout out Robert, Ethan, Lizbeth, Gustavo, Aya and Blessing for at least attempting to try to understand my code although it was a bit difficult 
