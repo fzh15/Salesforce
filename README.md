@@ -2,9 +2,9 @@
 
 ## Week 1 Assignment: Flixster
 
-Submitted by: **NAME**
+Submitted by: **Faaizah Afoda**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **20** hours spent in total
 
 Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
