@@ -1,1 +1,57 @@
+#movies-grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 
+
+
+}
+
+html{
+    background-color: pink;
+}
+
+#title{ 
+    color:purple;
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+
+
+}
+
+#search{
+    color:white;
+    margin: left;
+    width: 10%;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+
+
+
+#load-more-movies-btn {
+    background: var(--navbar-bg);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    padding: 8px 30px;
+    cursor: pointer;}
+
+.movie-title{
+    font-weight: bold;
+}
+
+.movie-votes{
+
+
+    font-weight: bold;
+
+}
