@@ -63,14 +63,14 @@ The lessons about creating Elements, Forms, Functions, selector selections, img 
 
 Response:
 
-I would have redid my code and done a less complex approach. I would have spent more time doing the strech features. 
+I would have redid my code and done a less complex approach. I would have spent more time doing the strech features and perfecting the load more and search.
   
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
 
 Response:
 
-I dont think I had felt confident with this project. I thought out the concepts well however the excuetion was more complex that I knew how to do so i spent more time right to figure out how to successfully get it to work the way I wanted to when there was easier ways to be taken. I wanted to see my detail through but it only ended up putting me at a disadvantage as we had the time constraint. 
+I dont think I felt confident with this project. I thought out the concepts well however the excuetion was much more complex that I knew how to do so I spent more time trying to figure out how to successfully get it to work the way I wanted to when there was easier ways to be taken. I wanted to see my idea through but it only ended up putting me at a disadvantage as we had limited time. 
 
 
 
