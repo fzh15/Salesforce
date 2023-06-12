@@ -13,129 +13,184 @@
 //aaply them to function and go through a looop that will apply it to each card made 
 
 
-const apiKey = "92e0489f41b248b8bdda68b2fda302cd"
-const addMovie = (MovieObj) => {
+const apiKey = "92e0489f41b248b8bdda68b2fda302cd";
+    const moviesGrid = document.querySelector('#movies-grid');
+    const loadMorebBtn = document.querySelector('#load-more-movies-btn');
+    const SeachInput = document.querySelector('#search-input');
+    const closeSearchBtn = document.querySelector('#close-search-btn');
 
-    const Movie = docuemnt.querySelector('#movies-grid')
-    const btn = document.createElement('#load-more-movies-btn')
-    li.innerHTML = "${MovieObj}"
-    Movie.appendChild(li)
+let currentPage = 1;
+let currentSearchItem = '';
+const url= 'https://api.themoviedb.org/3/movie/now_playing?language=en-US';
+const createUrl = (searchTerm, pageID) => `${url}&page=${pageID}&query=${searchTerm}&api_key=${apiKey}`;
+const searchUrl = 'https://api.themoviedb.org/3/search/movie?';
+const createSearchUrl = (searchTerm, pageID) =>`${searchUrl}&page=${pageID}&query=${searchTerm}&api_key=${apiKey}` ;
+
+const addMovie = (movieObj) => {
+
+    const MElement = generateMovieCard(movieObj.title,movieObj.poster_path, movieObj.vote_average )
+
+    moviesGrid.innerHTML += MElement;
+
+    // const Movie = docuemnt.querySelector('#movies-grid')
+    // const btn = document.createElement('#load-more-movies-btn')
+    // li.innerHTML = "${MovieObj}"
+    // Movie.appendChild(li)
 }
 
-const apiCall = async () => {
-    const res = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=92e0489f41b248b8bdda68b2fda302cd")
-    const data = await res.json()
-    console.log(`The data is ${data.data[0].type}`)
+
+
+const fetchMovies = async() => {
+    moviesGrid.innerHTML = ""
+    if (currentSearchItem != ""){
+        const res = await fetch(createSearchUrl(currentSearchItem, currentPage));
+        console.log("search link: "+createSearchUrl(currentSearchItem, currentPage));
+        const data = await res.json();
+        data.results.forEach((movie) => {
+            addMovie(movie);
+            
+        });
+    }
+else{
+    const res = await fetch(createUrl(currentSearchItem, currentPage));
+    console.log("link: "+createUrl(currentSearchItem, currentPage));
+    // console.log(res);
+    const data = await res.json();
+    data.results.forEach((movie) => {
+        addMovie(movie);
+        
+    });
 }
-
-const GMovieElement =  document.querySelector('#movies-grid')
-
+ 
 
 
-async function getData(){
+    // const res = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=92e0489f41b248b8bdda68b2fda302cd");
+    // const data = await res.json();
 
-    //drill into data thats giveen by url; read data then put into a general array 
-
-    const response = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=92e0489f41b248b8bdda68b2fda302cd")
-    const jsonrespose = await response.json();
-    console.log(jsonrespose.results)
+    // console.log(data.results);
+    
 
 
-    // able to manipulate using let type
-    let movies = jsonrespose.results
-    movies.forEach(movie => {
+    // if (data.page < data.total_pages){
+    //     loadMorebBtn.style.display = "block";
 
-        //code 
-       // generateMovieCard(movie.title,movie.poster_path, movie.votes_average )
-        const MElement = generateMovieCard(movie.title,movie.poster_path, movie.vote_average )
+    // }
+    // else{
+    //     loadMorebBtn.style.display = "none";
+    // }
 
-        GMovieElement.innerHTML += MElement;
+};
+
+
+function generateMovieCard(title, img, votes)
+{    if (!img){ // handling blank image 404 error
+    return `<div class = "movie-card">
+    <p class="movie-title">${title}</p> 
+    <img src="/Users/fafoda/Desktop/FLEX CLASS/Project/site-week1-project1-flixster-starter-main/blank image - Google Search.html" alt="image of movie" class="movie-poster"><br><br>
+    <p class="movie-votes">&#11088 ${votes}</sp><br><br><br>
+    <!--rating incremnetation-->
+    </div>
+`
+        // const MElement = generateMovieCard(movieObj.title,movieObj.poster_path, movieObj.vote_average )
 
     }
-    )
-
-
-    // .then((response) => response.json())
-    // .then((json) => console.log("1", json));
-}
-
-getData()
-
-//stores the information from api in the movie card 
-function generateMovieCard(title, img, votes)
-{
     return ` 
     <div class = "movie-card">
             <p class="movie-title">${title}</p> 
-            <img src="https://image.tmdb.org/t/p/w342${img}" alt="image of movie" class="movie-postee"><br><br>
-            <p class="movie-votes">${votes}</sp><br><br><br>
+            <img src="https://image.tmdb.org/t/p/w342${img}" alt="image of movie" class="movie-poster"><br><br>
+            <p class="movie-votes">&#11088 ${votes}</sp><br><br><br>
             <!--rating incremnetation-->
             </div>
     `
 };
 
 
-// generateMovieCard.ForEach(movie => {
+// SearchInput.addEventListener('submit', (event)=> {
+//     if (event.key === "Enter"){
+//         event.preventDefault();
+//         currentPage = 1;
+//         moviesGrid.innerHTML= '';
+//         fetchMovies();
+//     }
+
+//     const searchI = document.getElementById( 'search-input') ;
+//     currentSearchItem = searchI.value();
+//     const searchB = document.getElementById( 'search-button' );
+//     const submittB = document.getElementById( 'search-form' );
+
+//     submitBtn.addEventListener('submit', (event) => {
+//     const moviesGrid = document.getElementById('movies-grid');
+//     moviesGrid.innerHTML = ' '
+//     incident.preventDefault();
+//     const searchH = event.target.search.value;
+//     fetchMovies('https://api.themoviedb.org/3/search/movie?&page=${currentPage}&query=${currentSearchItem}&api_key=${apiKey}')
+
+
+//     });
+
+
+// });
+const searchI = document.getElementById('search-input') ;
+const submitForm = document.getElementById('search-form');
+const searchButton = document.getElementById('search-button');
+
+searchButton.addEventListener("click", handleSubmit); // putting event listener on button
+console.log("added event listener for search")
+
+function handleSubmit(){
+    console.log("started a search")
+    // console.log(currentSearchItem);
+    // console.log(searchI.value);
+    currentSearchItem = searchI.value;
+    console.log(currentSearchItem);
+    fetchMovies();
+
+}
+
+
+closeSearchBtn.addEventListener('click', () => {
+
+    currentSearchItem = '';
+    currentPage = 1;
+    moviesGrid.innerHTML = '';
+    fetchMovies();
+
+
+});
+
+
+
+
+const loadMoreButton = document.getElementById('load-more-movies-btn');
+loadMoreButton.classList.add('load-more-movies-btn')
+// loadMoreButton.addEventListener('click', loadMovies);
+
+
+// const loadMoreButton = document.createElement('div');
+// loadMoreButton.id = 'load-more-movies-btn';
+// loadMoreButton.classList.add('load-more-movies-btn');
+// loadMoreButton.innnerHTML = "Load more"
+// document.body.appendChild(loadMoreButton);
+
+loadMoreButton.addEventListener('click', loadMovies);
+
+
+async function loadMovies()
+{
+    console.log("hello???")
+    currentPage++;
+
+    const movies = await fetchMovies(currentPage);
+    generateMovieCard(movies);
+
+    }
+
+
+fetchMovies();
+
+
     
 
-// console.log(generateMovieCard("title", "www.google.com", 4))
 
-
-// })
-
-
-
-// MovieCard("title", "img", "votes")
-
-// async function MoreMovies(){
-//     currentPage++;
-//     apiCall = newU(currentPage)
-//     getData(apiCall)
-
-// }
-
-
-// const Dform = document.querySelector('#search-input')
-// document.getElementbyId(formbuttn).addEventListener("submit", (incident)=> {
-
-//         incident.preventdefault();
-//         const sTerm= Dform.value;
-//         console.log(sTerm);
-         
-// } )
-
-
-/// load more button 
-
-
-
-
-
-
-async function loadMovies(){
-    currentPage++;
-    apiUrl = newUrl(currentPage)
-    fetchMovies(apiUrl);
-
-    document.addEventListener('load', async() => {
-    const movies = await fetchMovies(currentPage);
-    generateMovieCards(movies);
-    3});
-
-    const loadMoreButton = document.getElement('load-more-movies-btn');
-    loadMoreButton.addEventListener('click', loadMovies);
-
-    const searchI = document.getElementById( 'search-input') ;
-    const searchB = document. getElementById( 'search-button' );
-    const submittB = document.getElementById( 'search-form' );
-
-    submitBtn.addEventListener('submit', (incident) => {
-    const moviesGrid = document.getElementById( 'movies-grid');
-    moviesGrid.innerHTML = ' '
-    incident.preventDefault();
-    const searchH = incident.target.search.value;
-    fetchMovies('https://api.themoviedb.org/3/search/movie?&page=*+currentPage+"Gguery=*+searchNow+Â°&apikey='+ currentPage + '&query='+ apikey)
-    })
-}
 
 
