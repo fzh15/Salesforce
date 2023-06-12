@@ -34,7 +34,7 @@ html{
 
 
 
-#load-more-movies-btn {
+#load-more-movies-btn-div{
     background: var(--navbar-bg);
     color: white;
     display: flex;
